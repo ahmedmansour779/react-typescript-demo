@@ -1,5 +1,11 @@
 import { Text } from '@mantine/core';
 import './App.css';
+import { Box } from './components/Context/Box';
+import { ThemeContextProvider } from './components/Context/ThemeContext';
+import { UserContextProvider } from './components/Context/UserContext';
+import { UserInContext } from './components/Context/UserInContext';
+import { DomRef } from './components/Refs/DomRef';
+import { MutableRef } from './components/Refs/MutableRef';
 import { Counter } from './components/State/Counter';
 import { LoggedIn } from './components/State/LoggedIn';
 import { User } from './components/State/User';
@@ -57,6 +63,14 @@ function App() {
       <LoggedIn /><hr />
       <User /><hr />
       <Counter /><hr />
+      <ThemeContextProvider>
+        <Box />
+      </ThemeContextProvider><hr />
+      <UserContextProvider>
+        <UserInContext />
+      </UserContextProvider><hr />
+      <DomRef /><hr />
+      <MutableRef /><hr />
     </>
   )
 }
