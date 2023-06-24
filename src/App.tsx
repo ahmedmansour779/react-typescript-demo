@@ -1,5 +1,6 @@
 import { Text } from '@mantine/core';
 import './App.css';
+import { CounterClass } from './components/Class/CounterClass';
 import { Box } from './components/Context/Box';
 import { ThemeContextProvider } from './components/Context/ThemeContext';
 import { UserContextProvider } from './components/Context/UserContext';
@@ -71,6 +72,7 @@ function App() {
       </UserContextProvider><hr />
       <DomRef /><hr />
       <MutableRef /><hr />
+      <CounterClass message='hello' />
     </>
   )
 }
