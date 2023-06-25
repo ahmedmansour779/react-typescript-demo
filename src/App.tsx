@@ -1,6 +1,7 @@
 import { Text } from '@mantine/core';
 import './App.css';
-import { CounterClass } from './components/Class/CounterClass';
+import { Private } from './components/Auth/Privet';
+import { ProfileAuth } from './components/Auth/ProfileAuth';
 import { Box } from './components/Context/Box';
 import { ThemeContextProvider } from './components/Context/ThemeContext';
 import { UserContextProvider } from './components/Context/UserContext';
@@ -10,6 +11,11 @@ import { MutableRef } from './components/Refs/MutableRef';
 import { Counter } from './components/State/Counter';
 import { LoggedIn } from './components/State/LoggedIn';
 import { User } from './components/State/User';
+import { List } from './components/generics/List';
+import { CustomButton } from './components/html/ButtonHtml';
+import { CustomComponent } from './components/html/CustomComponent';
+import { InputHtml } from './components/html/InputHtml';
+import { TextPolymorphic } from './components/polymorphic/TextPolymorphic';
 import { ButtonHandel, ButtonProp } from './components/props/Button';
 import { Container } from './components/props/Container';
 import Greet from './components/props/Greet';
@@ -19,6 +25,8 @@ import { Oscar } from './components/props/Oscar';
 import Person from './components/props/Person';
 import PersonList from './components/props/PersonList';
 import Status from './components/props/Status';
+import { RandomNumber } from './components/restriction/RandomNumber';
+import { Toast } from './components/templateliterals/Toast';
 
 function App() {
   const personName = {
@@ -43,6 +51,13 @@ function App() {
       first: "ahmed",
       last: "mansour"
     }
+  ]
+
+  const listNameId = [
+    { id: 1, name: "ahmed" },
+    { id: 2, name: "mansour" },
+    { id: 3, name: "hammed" },
+    { id: 4, name: "ibrahem" },
   ]
   return (
     <>
@@ -72,7 +87,20 @@ function App() {
       </UserContextProvider><hr />
       <DomRef /><hr />
       <MutableRef /><hr />
-      <CounterClass message='hello' />
+      <Private isLoggedIn={false} Component={ProfileAuth} /><hr />
+      <List
+        items={listNameId}
+        onClick={(item) => console.log("hello", item.name, "your object is", item)}
+      /><hr />
+      <RandomNumber value={20} /><hr />
+      <Toast position='center' /><hr />
+      {/* 
+      // ! you not can add style={{ color: "red" }} in any component except CustomButton
+      */}
+      <CustomButton variant='primary' style={{ color: "red" }} >ahmed</CustomButton><hr />
+      <InputHtml /><hr />
+      <CustomComponent name='ahmed' isLoggedIn={true} numMsgs={20} /><hr />
+      <TextPolymorphic as='h2' children="ahmed" />
     </>
   )
 }
